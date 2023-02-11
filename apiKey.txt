@@ -4,4 +4,4 @@ https://api.rawg.io/api/platforms?key=c4b1160de0614f658ad33647623a85b0
 
 https://api.rawg.io/api/games?key=c4b1160de0614f658ad33647623a85b0&dates=2019-09-01,2019-09-30&platforms=18,1,7
 
-https://api.rawg.io/api/games
+https://api.rawg.io/api/games?key=c4b1160de0614f658ad33647623a85b0

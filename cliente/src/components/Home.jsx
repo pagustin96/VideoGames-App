@@ -1,49 +1,31 @@
-import React, {useEffect, useState} from 'react'
-import { NavLink} from 'react-router-dom'
-import axios from 'axios'
+import React from 'react'
+import background from '../img/fondo.jpg'
+import { Card } from './Card'
 
-export const Home = () => {
-
-    const[data, setData] = useState([]) 
-
-    useEffect(() => {
-      let url = 'http://localhost:5000/api'
-      axios.get(url)
-          .then(res => {
-            const array = Object.values(res.data)
-              setData(array) 
-              console.log(array)
-              
-          })
-  }, [])
+export const Home = (busqueda) => {
 
 
+
+  const bgContainer = {
+    backgroundImage: `url(${background})`,
+    backgroundSize: '100% ',
+    backgroundPosition: 'center top',
+    
+   }
 
   return (
+    <div className='text-center text-white bg-dark min-vh-100 min-vw-100' style={bgContainer}>
+       
+      <h1 className='mt-5'>Nuevos Lanzamientos</h1>
+      <h2 className=''>Descubri lo ultimo en videojuegos</h2>
 
-    <div className='container'>
-          <h2 className='text-center'>Nuevos Lanzamientos</h2>
-  
-          <div className='row mt-4' >
-      
-      {
-            data.map((item) => {
-                return <div className='col-3 card m-1' style={{width: '18rem;'}} key={item.id}>
-                        <img src={item.background_image} className="card-img-top" alt="imagen"/>
-                      <div className="card-body">
-                        <h5 class="card-title">{item.name} </h5>
-                        <p class="card-text">{item.rating}</p>
-                        <p class="card-text">{item.playtime}</p>
-                        <NavLink to='/#' class="btn btn-primary">Editar</NavLink>
-                      </div>
-                        
-                </div>
-            })
-           }      
-    
-
+      <div className='d-flex justify-content-center mt-4' >
+      <section className='row d-flex justify-content-center'><Card busqueda={busqueda}/></section>
+                   
       </div>
 
-    </div>
+</div>
+    //</div>
+    
   )
 }
