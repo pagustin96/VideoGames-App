@@ -1,14 +1,14 @@
 const axios = require ('axios')
 
  const getGames = async (req, res) => {
-    let response = await axios('https://api.rawg.io/api/games?key=c4b1160de0614f658ad33647623a85b0&search='+ req.query.game);
+    let response = await axios('https://api.rawg.io/api/games?key=c4b1160de0614f658ad33647623a85b0&page='+ req.query.page);
     
     return response;
 }
 
 
-const getGamesBusq = async (req, res) => {
-    console.log('Entro en busqueda')
+const getPage = async (req, res) => {
+    console.log('Entro en pages')
     let responseGames = await getGames(req, res)
        
         
@@ -22,4 +22,4 @@ const getGamesBusq = async (req, res) => {
 }
 
 
-module.exports = getGamesBusq
+module.exports = getPage

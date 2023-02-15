@@ -9,7 +9,6 @@ export const RouterPrincipal = () => {
 
   const busquedaParams = (datosHijo) => {
     setDatos(datosHijo)
-    console.log('desde router:', datos)
   }
 
   return (
