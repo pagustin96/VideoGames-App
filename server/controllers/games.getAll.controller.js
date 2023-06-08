@@ -20,45 +20,6 @@ const getGamesAll = async (req, res) => {
 }
 
 
-// Esta funcion busca dentro de la primer pagina las coincidencias de los juegos
-/*
-const gameSearch = (array, namex) => {
-    const response = array.filter( (nombre) => {
-        if (nombre.name.toLowerCase().includes(namex)){
-          return nombre.name
-        }
-
-    })
-    return response
-}
-*/
-
-/* Esta funcion es para mapear todas las paginas y hacer un solo array con todos los juegos existentes
-
-ES IMPOSIBLE POR LA CANTIDAD DE TIEMPO QUE TARDA EN EJECUTARSE EL CODIGO
-
-const objeto = async function getGames(obj) {
-    let response = await axios(obj.data.next);
-    console.log(obj.data.next)
-    return response;
-}
-
-
-const busqueda = async ( obj ) => {
-    const total = []
-    
-    while(obj.data.next) {
-        total.push(obj.data.results)
-       
-        obj = await objeto(obj)
-       
-    }
-   res.json(total)
-}
-
-*/
-
-
 
 
 

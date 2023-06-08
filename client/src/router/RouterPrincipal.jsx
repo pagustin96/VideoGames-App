@@ -9,6 +9,7 @@ export const RouterPrincipal = () => {
   const[game, setGame] = useState('') // almaceno la busq
   const[data, setData] = useState([]) // aca almaceno el array de resultados
   const[api, setApi] = useState('') // 
+  const[ide, setIde] = useState('')
     
   // Se pasa al componente hijo y se ejecuta desde alli para devolver el string de busqeda y setearlo al estado
   const busquedaParams = (datosHijo) => {
@@ -16,27 +17,36 @@ export const RouterPrincipal = () => {
   } 
 
 
+
+
 // Primer renderizado carga los primeros juegos de la pagina 1 de la api    
    useEffect(() => {
-    
-    const url = 'http://localhost:5000/api';
+    myF()
+   /* const url = 'http://localhost:5000/api';
     
     fetch(url)
         .then((response) => response.json())
-        .then(res =>  setData(res))
-}, [])
+        .then(res =>  setData(res))*/
+
+       
+}, [game])
 
 
-// Busqueda de juegos a travez de la api 
-if(api !== game && game !== undefined){
-  setApi(game)
-  const url = `http://localhost:5000/api/videogames?game=${game}`;
-
-  fetch(url)
-        .then((response) => response.json())
-        .then(res =>  setData(res))
+// Busqueda de juegos a travez de la api
+const myF = () => {
+  console.log('si entra a F')
+  if(api !== game && game !== undefined){
+    setApi(game)
+    const url = `http://localhost:5000/api/videogames?game=${game}`;
   
-}
+    fetch(url)
+          .then((response) => response.json())
+          .then(res =>  setData(res))
+    
+  }
+} 
+
+
 
   return (
     <BrowserRouter>
@@ -45,7 +55,7 @@ if(api !== game && game !== undefined){
        
 
         <Routes>
-            <Route path='/' element={ <Home data={data}/> }/>        
+            <Route path='/' element={ <Home info={data}/> }/>        
             <Route path='/game/:id' element={ <Info />} />
         </Routes>
     </BrowserRouter>

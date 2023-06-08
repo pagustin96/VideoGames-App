@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './css/card.css'
 // import ReactPaginate from 'react-paginate'
 
 
@@ -7,25 +8,15 @@ import { Link } from 'react-router-dom'
 export const Card = ({data}) => {
 
 
-  const bgCard = {
-    backgroundColor : '#151515',
-    color: 'white',
-    width: '18rem',
-    opacity: '0.95'
-       
-  }
-
-
-
   return (
     <>
-            {
+            {Array.isArray(data) ?
 
                   data.map((item) => {
                     
-                    return <div className=' card m-1 bg-card' style={bgCard} key={item.id}>
+                    return <div className='card'  key={item.id}>
                             
-                            <img src={item.background_image} className="d-flex card-img-top" alt="imagen"/>
+                          <img src={item.background_image} className="card-image" alt="imagen"/>
                           <div className="card-body text-center ">
                             <h5 className="card-title">{item.name} </h5>
                             <p className="card-text">Rating: {item.rating}</p>
@@ -33,8 +24,8 @@ export const Card = ({data}) => {
                             <button className='btn btn-outline-light'><Link to={`/game/${item.id}`} className="text-reset text-decoration-none">Ver Mas</Link></button>
                           </div>
                             
-                    </div>
-                  })
+                    </div> 
+                  }) : <p>No data available</p>
             
             } 
     </>
